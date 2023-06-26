@@ -2,6 +2,7 @@ phone_book={}
 path: str = 'sem8/phone_book.txt'
 
 
+
 def remove():
     result=search()
     show_contacts(result)
@@ -9,7 +10,6 @@ def remove():
     del_cnt = phone_book.pop(index)
     print(f'\n Контакт {del_cnt.get("name")} успешно удален')
     print('='*200 +'\n')
-
 
 def open_file():
     phone_book.clear()
@@ -20,8 +20,6 @@ def open_file():
         nc = contact.strip().split(':')     # strip очищает начало и конец от ненужных символов
         phone_book[int(nc[0])] = ({'name': nc[1], 'phone': nc[2], 'coment': nc[3]})
     print('\nТелефонная книга успешно загружена!')
-
-
 
 def save_file():
     data=[]
@@ -34,7 +32,6 @@ def save_file():
     print(f'\n Телефонная книга успешно сохранена')
     print('='*200 +'\n')
 
-
 def search():
     result={}
     word = input('Введите слово для поиска ')
@@ -43,15 +40,11 @@ def search():
             result[i]=contact
     return result
 
-
-
 def show_contacts(book: dict[int,dict]):
     print('\n'+ '='*200)
     for i, cnt in book.items():
         print(f'{i:>3}. {cnt.get("name"): <20}{cnt.get("phone"): <20}{cnt.get("coment"):<20}')
     print('='*200 +'\n')
-
-
 
 def add_contact():
     uid=max(list(phone_book.keys())) +1
@@ -61,8 +54,6 @@ def add_contact():
     phone_book[uid] = {'name': name, 'phone': phone, 'coment': coment }
     print(f'\n Контакт {name} успешно добавлен')
     print('='*200 +'\n')
-
-
 
 def menu() -> int:
     main_menu = ''':Главное меню
@@ -80,7 +71,6 @@ def menu() -> int:
         if select.isdigit() and 0<int(select)<9:
             return int(select)
         print('Ошибка ввода, ввдите число от 1 до 8')
-
 
 open_file()
 
