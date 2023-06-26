@@ -2,6 +2,14 @@ phone_book={}
 path: str = 'sem8/phone_book.txt'
 
 
+def remove():
+    result=search()
+    show_contacts(result)
+    index=int(input('Введите id контакта под удаление '))
+    del_cnt = phone_book.pop(index)
+    print(f'\n Контакт {del_cnt.get("name")} успешно удален')
+    print('='*200 +'\n')
+
 
 def open_file():
     phone_book.clear()
@@ -93,7 +101,7 @@ while True:
         case 6:
             pass
         case 7:
-            pass
+            remove()
         case 8:
             print('До свидания!')
             break
