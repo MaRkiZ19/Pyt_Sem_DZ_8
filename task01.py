@@ -1,7 +1,41 @@
 phone_book={}
 path: str = 'sem8/phone_book.txt'
 
+def menu_smal() -> int:
+    main_menu = '''Меню редактирования контакта:
+    1. ФИО
+    2. Телефонный номер
+    3. Комментарий
+    4. Вернуться назад
+    '''
+    print(main_menu)
+    while True:
+        select = input('Выберете пункт меню: ')
+        if select.isdigit() and 0<int(select)<5:
+            return int(select)
+        print('Ошибка ввода, ввдите число от 1 до 8')
 
+def change(menu_smal):
+    result=search()
+    show_contacts(result)
+    index=int(input('Введите id контакта под изменение '))
+    ch_cnt = phone_book.get(index)
+    while True:
+        select = menu_smal()
+        match select:
+            case 1:
+                ch_cnt['name'] = input('Введлите новое имя: ')
+                print(f'\n Контакт успешно изменен')
+            case 2:
+                ch_cnt['phone'] = input('Введлите новый номер: ')
+                print(f'\n Контакт успешно изменен')
+            case 3:
+                ch_cnt['coment'] = input('Введлите новвый комментарий: ')
+                print(f'\n Контакт успешно изменен')
+            case 4:
+                break
+    print(f'\n Спасибо, приходите еще')
+    print('='*200 +'\n')
 
 def remove():
     result=search()
@@ -89,7 +123,7 @@ while True:
             result = search()
             show_contacts(result)
         case 6:
-            pass
+            change(menu_smal)
         case 7:
             remove()
         case 8:
